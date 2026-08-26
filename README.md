@@ -45,6 +45,15 @@ responde eres tú, y por eso el cliente es quien tiene las manos.
 todo a sí mismo, y entonces nunca pregunta nada. Se corrige con
 `session/set_mode`, que viaja por el mismo cable.
 
+## El curso
+
+Este repo es el material del módulo **ACP desde cero**, del curso
+[Diseño de sistemas agénticos](https://www.fixtergeek.com/cursos/sistemas-agenticos/acp-desde-cero)
+en [fixtergeek.com](https://www.fixtergeek.com). Ahí está el video que recorre estos
+mismos commits, paso por paso.
+
+Hecho por [blissito](https://github.com/blissito) · [FixterGeek](https://www.fixtergeek.com)
+
 ## Licencia
 
 MIT.
