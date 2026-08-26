@@ -15,13 +15,41 @@ git checkout 04-permiso      # una sesión, un turno, y el agente pidiendo permi
 
 ## Probarlo
 
+El agente **no viene en este repo, y no puede venir**: es un programa aparte que
+se instala una vez y queda en tu `PATH`. Este cliente sólo lo busca por su nombre
+y lo arranca como subproceso — por eso el repo puede presumir de cero
+dependencias mientras el agente trae ciento y pico.
+
 ```bash
 npm i -g @agentclientprotocol/claude-agent-acp
+claude-agent-acp --version        # 0.70.0
+
 node client.mjs "crea un archivo saludo.txt con el texto: hola desde ACP"
 node inspector.mjs wire/sesion.jsonl
 ```
 
-El agente se puede cambiar con `ACP_AGENT` (por ejemplo `codex-acp`).
+### Los tres agentes
+
+Cualquiera de ellos sirve; el cliente no cambia una línea. Los tres se probaron
+contra la etiqueta `02-initialize` de este repo:
+
+| Agente | Se instala con | Qué necesita |
+|---|---|---|
+| **Claude** | `npm i -g @agentclientprotocol/claude-agent-acp` | tu sesión de Claude Code (contesta `authMethods: []`) |
+| **Codex** | `npm i -g @zed-industries/codex-acp` | login de ChatGPT, `CODEX_API_KEY` o `OPENAI_API_KEY` |
+| **DeepSeek** | `npm i -g deepseek-acp` | credenciales de DeepSeek Harness |
+
+```bash
+ACP_AGENT=codex-acp   node client.mjs
+ACP_AGENT=deepseek-acp node client.mjs
+```
+
+> ⚠️ El paquete de Codex es `@zed-industries/codex-acp`. **`codex-acp` a secas no
+> existe en npm** y devuelve 404.
+
+Que respondan distinto no es un problema: es el protocolo funcionando. Claude
+devuelve `authMethods: []` porque ya estás firmado en la máquina, y Codex
+devuelve tres formas de entrar. El cliente pregunta y se ajusta; no supone.
 
 ### …y contra un agente que no está en tu máquina
 
