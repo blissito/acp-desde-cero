@@ -11,7 +11,13 @@ Cada commit agrega un concepto. Para pararte en cualquiera:
 ```bash
 git checkout 02-initialize   # arrancar al agente y saludarlo
 git checkout 04-permiso      # una sesión, un turno, y el agente pidiendo permiso
+git checkout 05-inspector    # leer el cable: el turno entero en una pantalla
+git checkout 06-remoto       # el mismo cliente contra un agente que no está aquí
+git checkout main            # de vuelta al presente
 ```
+
+No hay ramas: los capítulos son **etiquetas**. `git log --oneline --decorate`
+las enseña todas.
 
 ## Probarlo
 
